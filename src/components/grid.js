@@ -1,9 +1,17 @@
-import React from 'react';
+import React from "react";
 
 function Grid() {
   return (
     <div className="Grid">
+      <div className="SimulationGenerations">
+        <p>Generation: "###"</p>
+      </div>
       <h1>Grid</h1>
+      <div className="SimulationInitiation">
+        <button>Play</button>
+        <button>Pause</button>
+        <button>Stop</button>
+      </div>
     </div>
   );
 }

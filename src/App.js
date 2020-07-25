@@ -8,7 +8,6 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      <h1>Conway's Game of Life</h1>
       <div className="MainContent">
         <section className="SimulationSection">
           <Simulation />
