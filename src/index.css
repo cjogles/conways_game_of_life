@@ -1,5 +1,5 @@
 body {
-  background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/squares.png);
+  background-image: url("/arcade.png")
 }
 
 .box {
@@ -16,7 +16,7 @@ body {
 }
 
 .on {
-  background-color: green;
+  background-color: blue;
 }
 
 .box:hover {
@@ -50,4 +50,8 @@ h4 {
 
 h4 {
   margin-top: 0px;
+}
+
+h1 {
+  font-family: 'Press Start 2P', cursive;
 }

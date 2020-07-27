@@ -4,8 +4,8 @@ import "./index.css";
 import { ButtonToolbar, MenuItem, DropdownButton } from "react-bootstrap";
 
 class Box extends React.Component {
-  selectBox = () => {
-    this.props.selectBox(this.props.row, this.props.col);
+  getCell = () => {
+    this.props.getCell(this.props.row, this.props.col);
   };
 
   render() {
@@ -13,7 +13,7 @@ class Box extends React.Component {
       <div
         className={this.props.boxClass}
         id={this.props.id}
-        onClick={this.selectBox}
+        onClick={this.getCell}
       />
     );
   }
@@ -37,7 +37,7 @@ class Grid extends React.Component {
             boxId={boxId}
             row={i}
             col={j}
-            selectBox={this.props.selectBox}
+            getCell={this.props.getCell}
           />
         );
       }
@@ -108,7 +108,7 @@ class Main extends React.Component {
     };
   }
 
-  selectBox = (row, col) => {
+  getCell = (row, col) => {
     let gridCopy = arrayClone(this.state.gridFull);
     gridCopy[row][col] = !gridCopy[row][col];
     this.setState({
@@ -210,7 +210,8 @@ class Main extends React.Component {
   render() {
     return (
       <div>
-        <h1>The Game of Life</h1>
+        <h2>John Conway's</h2>
+        <h1> Game of Life</h1>
         <Buttons
           playButton={this.playButton}
           pauseButton={this.pauseButton}
@@ -224,7 +225,7 @@ class Main extends React.Component {
           gridFull={this.state.gridFull}
           rows={this.rows}
           cols={this.cols}
-          selectBox={this.selectBox}
+          getCell={this.getCell}
         />
         <h2>Generations: {this.state.generation}</h2>
       </div>
