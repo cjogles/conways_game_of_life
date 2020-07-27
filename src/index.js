@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import { ButtonToolbar, MenuItem, DropdownButton } from "react-bootstrap";
 
-class Box extends React.Component {
+class Cell extends React.Component {
   getCell = () => {
     this.props.getCell(this.props.row, this.props.col);
   };
@@ -11,7 +11,7 @@ class Box extends React.Component {
   render() {
     return (
       <div
-        className={this.props.boxClass}
+        className={this.props.cellClass}
         id={this.props.id}
         onClick={this.getCell}
       />
@@ -24,17 +24,17 @@ class Grid extends React.Component {
     const width = this.props.cols * 14;
     var rowsArr = [];
 
-    var boxClass = "";
+    var cellClass = "";
     for (var i = 0; i < this.props.rows; i++) {
       for (var j = 0; j < this.props.cols; j++) {
-        let boxId = i + "_" + j;
+        let cellId = i + "_" + j;
 
-        boxClass = this.props.gridFull[i][j] ? "box on" : "box off";
+        cellClass = this.props.gridFull[i][j] ? "cell on" : "cell off";
         rowsArr.push(
-          <Box
-            boxClass={boxClass}
-            key={boxId}
-            boxId={boxId}
+          <Cell
+            cellClass={cellClass}
+            key={cellId}
+            cellId={cellId}
             row={i}
             col={j}
             getCell={this.props.getCell}
@@ -228,6 +228,14 @@ class Main extends React.Component {
           getCell={this.getCell}
         />
         <h2>Generations: {this.state.generation}</h2>
+        <div className="rules">
+          <h2 className="rulesHeader">Rules</h2>
+          <h3>Any live cell with two or three live neighbours survives.</h3>
+          <h3>Any dead cell with three live neighbours becomes a live cell.</h3>
+          <h3>
+            All other live cells die and dead cells stay dead.
+          </h3>
+        </div>
       </div>
     );
   }
